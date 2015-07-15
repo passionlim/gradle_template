@@ -1,0 +1,5 @@
+rootProject.name="oshopping_user_master"
+include "oshopping_user_lib"
+include "oshopping_user_web"
+include "oshopping_user_apiserver"
+include "oshopping_user_api"
