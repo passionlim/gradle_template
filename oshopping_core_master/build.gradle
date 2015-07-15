@@ -1,0 +1,60 @@
+group="cj.oshopping.core"
+version="0.0.1-SNAPSHOT"
+
+allprojects {
+    repositories { 
+        mavenLocal()
+        mavenCentral() // maven { url: 'http://jcenter.bintray.com' }
+       	maven { url 'http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/snapshots/' } 
+       	maven { url 'http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/release/' } 
+    }
+    
+    //apply from: "${rootDir}/dependencies.gradle"
+}
+
+// subproject properties
+subprojects {
+	ext {
+		baseJavaVersion=1.8
+	}
+
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+
+    sourceCompatibility = baseJavaVersion
+    targetCompatibility = baseJavaVersion
+	
+	tasks.withType(JavaCompile) {
+	    options.encoding = 'UTF-8'
+	}	
+
+	eclipse {
+	    classpath {
+	         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+	         containers "org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-${baseJavaVersion}"
+	    }
+	}
+	
+	/*
+	uploadArchives {
+	    repositories {
+	        snapshotDeploy {
+	            repository(url: "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/snapshots/") {
+	                authentication(userName: mavenUser, password: mavenPassword)
+	            }
+	        }
+	        releaseDeploy {
+	            repository(url: "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/release/") {
+	                authentication(userName: mavenUser, password: mavenPassword)
+	            }
+	        }
+	    }
+	}
+	*/
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
