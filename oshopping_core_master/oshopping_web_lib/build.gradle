@@ -15,7 +15,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management' 
 
 dependencies {
-	//compile(":oshopping_core_lib")
+	compile project(":oshopping_core_lib")
     compile("org.springframework.boot:spring-boot-starter")
     testCompile("org.springframework.boot:spring-boot-starter-test") 
 }
