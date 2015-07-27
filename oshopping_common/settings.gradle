@@ -1,0 +1,3 @@
+rootProject.name="oshopping_common"
+include "core_lib", "web_lib"
+
