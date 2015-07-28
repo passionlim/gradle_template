@@ -1,0 +1,35 @@
+apply plugin: 'maven'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+  
+uploadArchives {
+    repositories.mavenDeployer {
+    	def mavenUser = System.getProperty("mavenUser" , 'noUser' )
+    	def mavenPassword =  System.getProperty("mavenPassword" , 'noPassword' )
+    	
+    	repository (url : releaseMaven ) {
+    		authentication(userName: mavenUser, password: mavenPassword) 
+    	}
+    	
+    	snapshotRepository (url : snapshotMaven ) {
+    		authentication(userName: mavenUser, password: mavenPassword) 
+    	}
+    }
+}

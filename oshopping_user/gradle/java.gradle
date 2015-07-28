@@ -29,9 +29,3 @@ repositories {
  	maven { url snapshotMaven } 
  	maven { url releaseMaven }
 }
-
-dependencyManagement {
-	dependencies {
-		dependency group: 'com.google.guava', name: 'guava', version: guavaVersion
-	}
-}

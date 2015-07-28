@@ -1,0 +1,85 @@
+apply plugin: 'maven'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+configurations.all {
+    // check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+  
+uploadArchives {
+    repositories.mavenDeployer {
+    	def mavenUser = System.getProperty("mavenUser" , 'noUser' )
+    	def mavenPassword =  System.getProperty("mavenPassword" , 'noPassword' )
+    	
+    	repository (url : releaseMaven ) {
+    		authentication(userName: mavenUser, password: mavenPassword) 
+    	}
+    	
+    	snapshotRepository (url : snapshotMaven ) {
+    		authentication(userName: mavenUser, password: mavenPassword) 
+    	}
+    }
+}
+
+//apply plugin: 'maven-publish'
+//apply plugin: 'maven-publish-auth'
+
+/*
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar) {
+	from javadoc
+}
+*/
+
+/*
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			
+			artifact sourceJar {
+				classifier "sources"
+			}
+			
+			artifact javadocJar {
+				classifier "javadoc"
+			}
+		}
+	}
+	repositories {
+		maven {
+			if (project.hasProperty("deployUser") && project.hasProperty("deployPassword") ) {
+				credentials {
+	               username deployUser
+	               password deployPassword
+				}
+			}
+			
+			if ( project.version.endsWith('-SNAPSHOT') ) {
+				name = "cjosSnapshot"
+				url snapshotMaven
+			} else if ( project.version.endsWith('-RELEASE2') ) {
+				name = "cjosRelease"
+				url releaseMaven
+			}           
+		}
+	}	
+}
+*/

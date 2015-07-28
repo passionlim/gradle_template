@@ -14,14 +14,13 @@ buildscript {
 }
 
 ext {
-    JAVA_GRADLE = "$rootDir/gradle/java.gradle"
-    
-    publicMaven = "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/public/"
-    snapshotMaven = "'http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/snapshots/'"
-    releaseMaven = "'http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/release/'"
-    
-    releaseBuild = version.endsWith('RELEASE')
-    snapshotBuild = version.endsWith('SNAPSHOT')
+	JAVA_GRADLE = "$rootDir/gradle/java.gradle"
+	DEPENDENCY_GRADLE = "$rootDir/gradle/dependency_version.gradle"
+	MAVEN_GRADLE = "$rootDir/gradle/maven-publish.gradle"
+	
+	publicMaven = "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/public/"
+	snapshotMaven = "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/snapshots/"
+	releaseMaven = "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/release/"
 }
 
 allprojects {
@@ -31,6 +30,4 @@ allprojects {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
-
-
 

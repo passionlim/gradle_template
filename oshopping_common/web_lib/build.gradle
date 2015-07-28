@@ -1,23 +1,8 @@
 apply from: JAVA_GRADLE
-
-apply plugin: 'spring-boot'
+apply from: DEPENDENCY_GRADLE
 
 dependencies {
-	compile project(":core_lib")
-    compile("org.springframework.boot:spring-boot-starter-web")
-}
-
-// setting for library
-bootRepackage.enabled=false
-
-install {
-	repositories.mavenInstaller {
-		pom.project {
-			parent { 
-				groupId 'org.springframework.boot'
-				artifactId 'spring-boot-starter-parent'
-				version "${springBootVersion}"
-			}
-		}
-	}
+    compile("org.springframework:spring-core")
+    compile("org.springframework:spring-web")
+    compile group: 'com.google.guava', name: 'guava' 
 }

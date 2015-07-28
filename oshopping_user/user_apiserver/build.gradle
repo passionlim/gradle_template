@@ -4,6 +4,7 @@ apply plugin: 'spring-boot'
 
 dependencies {
 	compile project(":user_lib")
+	
     compile("org.springframework.boot:spring-boot-starter-web")
 }
 

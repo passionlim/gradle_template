@@ -1,18 +1,16 @@
 apply from: JAVA_GRADLE
-
-apply plugin: 'spring-boot'
+apply from: DEPENDENCY_GRADLE
+apply from: MAVEN_GRADLE
 
 dependencies {
-	compile("cj.oshopping.core:core_lib:0.0.1-SNAPSHOT")
-    compile("org.springframework.boot:spring-boot-starter")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+	compile "cj.oshopping.core:core_lib:${oshoppingCommonVersion}"
+    compile "org.springframework:spring-core"
+    testCompile "org.springframework.boot:spring-boot-starter-test"
     
     compile group: 'com.google.guava', name: 'guava' 
 }
 
-// setting for library
-bootRepackage.enabled=false
-
+/*
 install {
     repositories.mavenInstaller {
         pom.project {
@@ -24,3 +22,4 @@ install {
         }
     }
 }
+*/

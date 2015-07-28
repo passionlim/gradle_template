@@ -1,15 +1,16 @@
 apply from: JAVA_GRADLE
 
 apply plugin: 'spring-boot'
+apply plugin: 'war'
 
 dependencies {
 	compile project(":user_lib")
-    compile("org.springframework.boot:spring-boot-starter-web")
+	
+	compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-web"
 }
 
-// setting for library
-bootRepackage.enabled=false
-
+/*
 install {
 	repositories.mavenInstaller {
 		pom.project {
@@ -21,4 +22,4 @@ install {
 		}
 	}
 }
-
+*/
