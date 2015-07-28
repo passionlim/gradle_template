@@ -1,6 +1,9 @@
 apply from: JAVA_GRADLE
+apply from: DEPENDENCY_GRADLE
+apply from: MAVEN_GRADLE
 
 apply plugin: 'spring-boot'
+apply plugin: 'war'
 
 dependencies {
 	compile project(":user_lib")
@@ -22,5 +25,4 @@ install {
 		}
 	}
 }
-
 

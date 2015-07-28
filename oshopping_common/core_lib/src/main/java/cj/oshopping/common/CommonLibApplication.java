@@ -1,5 +1,11 @@
 package cj.oshopping.common;
 
+/**
+ * Sample Application
+ * 
+ * @author passion
+ *
+ */
 public class CommonLibApplication {
 
 	public void testMethod() {
@@ -22,8 +28,10 @@ public class CommonLibApplication {
     }
     
     public void testMethod6() {
-    	System.out.println("testMethod5");
+    	System.out.println("testMethod6");
     }
-
-
+    
+    public void testMethod7() {
+    	System.out.println("testMethod7");
+    }
 }

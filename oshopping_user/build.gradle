@@ -7,9 +7,9 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.springframework.build.gradle:propdeps-plugin:${propdepsVersion}")
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
-        classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}")
+        classpath "org.springframework.build.gradle:propdeps-plugin:${propdepsVersion}" 
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"  
+        classpath "io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}" 
     }
 }
 
