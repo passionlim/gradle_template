@@ -1,22 +1,14 @@
-package cj.shopping.user.controller;
+package cj.shopping.user.apiserver.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import cj.oshopping.common.CommonLibApplication;
-import cj.oshopping.user.model.WebMember;
-
-@Controller
+@RestController
 public class CommonTestController {
 	
-	@RequestMapping
+	@RequestMapping("/hello")
 	public String index(String message) {
-		Class clazz = CommonLibApplication.class;
-
-		WebMember webMember = new WebMember();
-		webMember.setCustNo("");
-
-		return "hello world! " + message;
-		
+		return "hello world! broken " + message;
 	}
 }

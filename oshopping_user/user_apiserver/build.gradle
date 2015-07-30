@@ -5,14 +5,24 @@ apply from: MAVEN_GRADLE
 apply plugin: 'spring-boot'
 apply plugin: 'war'
 
+
 dependencies {
 	compile project(":user_lib")
 	
-    compile("org.springframework.boot:spring-boot-starter-web")
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+	compile "org.springframework.cloud:spring-cloud-starter-eureka" 
+   
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
-// setting for library
-bootRepackage.enabled=false
+eclipse {
+    wtp {
+        component {
+            contextPath = '/'
+        }
+    }
+}
 
 install {
 	repositories.mavenInstaller {

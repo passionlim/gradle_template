@@ -4,3 +4,5 @@ include "user_web"
 include "user_api"
 include "user_apiserver"
 include "user_model"
+
+include 'samples:apiserver_client'

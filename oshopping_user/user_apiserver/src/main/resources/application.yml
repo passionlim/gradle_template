@@ -1,0 +1,9 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: ${vcap.services.eureka-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instanceId:${random.value}}
+    
