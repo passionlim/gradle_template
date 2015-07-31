@@ -4,5 +4,6 @@ apply from: MAVEN_GRADLE
 
 dependencies {
 	compile project(":user_model")
+	
 }
 

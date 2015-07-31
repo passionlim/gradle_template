@@ -5,7 +5,10 @@ apply from: MAVEN_GRADLE
 apply plugin: 'spring-boot'
 
 dependencies {
+	compile "cj.oshopping.user:user_model:0.0.1-SNAPSHOT"
 	compile "org.springframework.boot:spring-boot-starter"
-	//compile "org.springframework.cloud:spring-cloud-starter-eureka" 
+	compile "org.springframework:spring-web"
+	
+	compile "org.springframework.cloud:spring-cloud-starter-ribbon" 
 }
 
