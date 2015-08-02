@@ -1,0 +1,14 @@
+info:
+  description: Spring Cloud Samples
+  url: https://github.com/spring-cloud-samples
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+spring:
+  profiles: centeral-db-config
+  cloud:
+    config:
+      uri: http://localhost:8888
