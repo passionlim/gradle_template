@@ -24,10 +24,17 @@ eclipse {
 
 repositories {
 	mavenLocal()
-	maven { url publicMaven }        
+    
+    if ( useNexus ) {
+		//maven { url publicMaven }
+	}
+
+    if ( useNexus ) {
+		//maven { url snapshotMaven } 
+		//maven { url releaseMaven }
+	}
+
  	mavenCentral()
- 	maven { url snapshotMaven } 
- 	maven { url releaseMaven }
 }
 
 javadoc {

@@ -22,10 +22,10 @@ eclipse {
 
 repositories {
 	mavenLocal()
-	maven { url publicMaven }        
-   	mavenCentral()
-   	maven { url snapshotMaven } 
-   	maven { url releaseMaven }
+	//maven { url publicMaven }        
+  mavenCentral()
+  //maven { url snapshotMaven } 
+  //maven { url releaseMaven }
 }
 
 javadoc {

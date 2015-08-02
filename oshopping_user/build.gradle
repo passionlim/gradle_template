@@ -1,7 +1,6 @@
 buildscript {
     repositories { 
         mavenLocal()
-        maven { url "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/public/" } 
         mavenCentral()
         maven { url "https://repo.spring.io/plugins-release" }
     }

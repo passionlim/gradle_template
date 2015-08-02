@@ -1,2 +1,6 @@
 rootProject.name="oshopping_common"
-include "core_lib", "web_lib", "eureka_server"
+include ":shared:core_lib" 
+include ":shared:web_lib"
+
+include ":infra:eureka_server"
+include ":infra:config_server"

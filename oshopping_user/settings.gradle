@@ -1,8 +1,14 @@
 rootProject.name="oshopping_user"
-include "user_lib"
-include "user_web"
-include "user_api"
-include "user_apiserver"
-include "user_model"
+
+// 회원 공용 라이브러리
+include ":shared:user_lib"
+include ":shared:user_model"
+
+// rest service 의 스펙정의 
+include ":api:user_api"
+
+// http 기반 rest service
+include ":service:user_web"
+include ":service:user_service"
 
 include 'samples:apiserver_client'
