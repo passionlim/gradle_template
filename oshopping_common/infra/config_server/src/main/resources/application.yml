@@ -16,5 +16,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/spring-cloud-samples/config-repo
+          uri: https://github.com/passionlim/gradle_template/tree/master/config
           basedir: target/config
