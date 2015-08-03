@@ -1,10 +1,18 @@
 spring:
   application:
     name: HelloClient
+
 eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 10
   client:
     registry-fetch-interval-seconds: 5
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+   
+UserService:
+  ribbon:
+    read-timeout: 3000  
+    connect-timeout: 3000
+    ServerListRefreshInterval: 1000
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 3 
+    OkToRetryOnAllOperations: true

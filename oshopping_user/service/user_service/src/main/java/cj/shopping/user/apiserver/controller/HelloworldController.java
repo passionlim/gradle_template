@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/hello")
-public class CommonTestController {
+public class HelloworldController {
 	
 	@RequestMapping
 	public String index(String message) {
