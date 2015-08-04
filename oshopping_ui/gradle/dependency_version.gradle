@@ -1,0 +1,11 @@
+apply plugin: 'io.spring.dependency-management' 
+
+dependencyManagement {
+	imports {
+        mavenBom "io.spring.platform:platform-bom:${springIoVersion}"
+    }
+    
+    dependencies {
+		dependency group: 'com.google.guava', name: 'guava', version: guavaVersion
+	}
+}

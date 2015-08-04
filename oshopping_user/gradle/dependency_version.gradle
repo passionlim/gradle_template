@@ -9,5 +9,8 @@ dependencyManagement {
     dependencies {
 		dependency group: 'com.google.guava', name: 'guava', version: guavaVersion
 		dependency group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+		dependency group: 'org.mybatis', name: 'mybatis',  version: mybatisVersion
+		dependency group: 'org.mybatis', name: 'mybatis-spring',  version: mybatisSpringVersion
+		
 	}
 }

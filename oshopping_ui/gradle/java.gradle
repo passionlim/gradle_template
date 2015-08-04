@@ -6,8 +6,6 @@ apply plugin: 'propdeps-maven'
 apply plugin: 'propdeps-idea'
 apply plugin: 'propdeps-eclipse'
 
-apply plugin: 'io.spring.dependency-management' 
-
 sourceCompatibility = baseJavaVersion
 targetCompatibility = baseJavaVersion
 
@@ -25,13 +23,11 @@ eclipse {
 }
 
 repositories {
-	maven { url publicMaven }
-    maven { url snapshotMaven } 
-	maven { url releaseMaven }
-	
- 	mavenCentral()
 	mavenLocal()
-
+	//maven { url publicMaven }        
+  mavenCentral()
+  //maven { url snapshotMaven } 
+  //maven { url releaseMaven }
 }
 
 javadoc {

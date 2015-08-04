@@ -8,11 +8,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
    
-UserService:
-  ribbon:
-    read-timeout: 3000  
-    connect-timeout: 3000
-    ServerListRefreshInterval: 1000
-    MaxAutoRetries: 1
-    MaxAutoRetriesNextServer: 3 
-    OkToRetryOnAllOperations: true
+#UserService:
+#  ribbon:
+#    read-timeout: 3000  
+#    connect-timeout: 3000
+#    ServerListRefreshInterval: 1000
+#    MaxAutoRetries: 1
+#    MaxAutoRetriesNextServer: 3 
+#    OkToRetryOnAllOperations: true

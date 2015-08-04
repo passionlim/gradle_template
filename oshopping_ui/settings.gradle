@@ -1,0 +1,4 @@
+rootProject.name="oshopping_ui"
+include ":shared:mall_static"
+include ":api:layout_api"
+include ":service:layout"

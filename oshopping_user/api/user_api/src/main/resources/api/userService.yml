@@ -1,0 +1,8 @@
+UserService:
+  ribbon:
+    read-timeout: 3000  
+    connect-timeout: 3000
+    ServerListRefreshInterval: 1000
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 3 
+    OkToRetryOnAllOperations: true

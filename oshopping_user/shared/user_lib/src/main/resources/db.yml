@@ -1,0 +1,10 @@
+datasource:
+  malldb:
+    jdbcUrl:
+    username:
+    
+  cbdb:
+    jdbcUrl:
+    username:
+    
+    

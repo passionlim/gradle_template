@@ -6,6 +6,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'war'
 
 dependencies {
+	compile project(":api:user_api")
 	compile project(":shared:user_lib")
 	
     compile "org.springframework.boot:spring-boot-starter-web"

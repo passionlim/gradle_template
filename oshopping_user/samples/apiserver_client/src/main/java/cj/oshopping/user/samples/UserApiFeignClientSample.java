@@ -2,53 +2,62 @@ package cj.oshopping.user.samples;
 
 import java.util.Map;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.context.annotation.Import;
 
 import com.google.common.collect.Maps;
 
-import cj.shopping.user.api.HelloWorld;
+import cj.oshopping.user.api.UserApiConfiguration;
+import cj.oshopping.user.api.spec.HelloWorld;
+import cj.oshopping.user.api.spec.WebMemberService;
+import cj.oshopping.user.model.WebMember;
 
+/**
+ * Feign 을 사용한 Sample
+ * 
+ * @author passion
+ *
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-@ComponentScan(basePackages={"cj.oshopping.user"})
+@Import(value = { UserApiConfiguration.class })
 public class UserApiFeignClientSample implements CommandLineRunner {
-	
+	Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	HelloWorld helloWorld;
-	
+
+	@Autowired
+	WebMemberService webMemberService;
+
 	public static void main(String[] args) {
-		new SpringApplicationBuilder()
-		.sources(UserApiFeignClientSample.class)
-		.web(false)
-		.run(args);
+		new SpringApplicationBuilder().sources(UserApiFeignClientSample.class).web(false).run(args);
 	}
 
 	@Override
 	public void run(String... arg0) throws Exception {
 		Map<String, String> parameters = Maps.newHashMap();
 		parameters.put("custNo", "100001");
-		while ( true ){
-			String webMember = helloWorld.helloWorld("test message");
-			System.out.println("Hello World! from " + webMember);
+		int failCount = 0;
+		while (true) {
+			try {
+				WebMember webMember = webMemberService.getWebMember("1000001");
+				System.out.println("Hello World! from " + ToStringBuilder.reflectionToString(webMember));
+			} catch (Exception e) {
+				failCount++;
+				LOGGER.error(e.getMessage(), e);
+			}
+			if (failCount > 10) {
+				System.out.println("failCount: " + failCount);
+				break;
+			}
 		}
-	}
-	
-	@FeignClient("UserService")
-	public interface HelloWorld {
-	    @RequestMapping(method = RequestMethod.GET, value = "/hello")
-		String helloWorld(@RequestParam("message") String message);
 	}
 }

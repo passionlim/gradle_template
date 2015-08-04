@@ -1,14 +1,19 @@
 package cj.shopping.user.apiserver.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cj.oshopping.user.api.spec.HelloWorld;
+
 @RestController
-@RequestMapping("/hello")
-public class HelloworldController {
+public class HelloworldController implements HelloWorld {
 	
-	@RequestMapping
-	public String index(String message) {
-		return "hello world! " + message;
+	@Override
+	public String helloWorld(String message) {
+		return "hello1 world " + message;
+	}
+
+	@Override
+	public String helloWorld2(String message) {
+		return "hello12 world " + message;
 	}
 }

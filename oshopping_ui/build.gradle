@@ -1,0 +1,34 @@
+buildscript {
+    repositories { 
+        mavenLocal()
+        //maven { url "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/public/" } 
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+    }
+
+    dependencies {
+    	classpath("org.springframework.build.gradle:propdeps-plugin:${propdepsVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}")
+    }
+}
+
+ext {
+	JAVA_GRADLE = "$rootDir/gradle/java.gradle"
+	DEPENDENCY_GRADLE = "$rootDir/gradle/dependency_version.gradle"
+	MAVEN_GRADLE = "$rootDir/gradle/maven-publish.gradle"
+
+	publicMaven = "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/public/"
+	snapshotMaven = "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/snapshots/"
+	releaseMaven = "http://ecd.cjmall.com:8080/ecomdevrepo/content/repositories/release/"
+
+}
+
+allprojects {
+	group=groupName
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+

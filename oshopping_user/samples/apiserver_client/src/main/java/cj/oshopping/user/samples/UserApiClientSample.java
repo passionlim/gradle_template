@@ -14,6 +14,13 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.common.collect.Maps;
 
+/**
+ * RestTemplate 을 사용한 Sample
+ * Failover 처리가 되지 않는다.
+ * 
+ * @author passion
+ *
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 public class UserApiClientSample implements CommandLineRunner {
@@ -38,7 +45,7 @@ public class UserApiClientSample implements CommandLineRunner {
 		parameters.put("custNo", "100001");
 		//WebMember webMember = restTemplate.getForObject("http://UserService/users/{custNo}", WebMember.class, parameters); 
 		while ( true ){
-			String webMember = restTemplate.getForObject("http://UserService/hello?message=asdf", String.class, parameters);
+			String webMember = restTemplate.getForObject("http://UserService/hello/world1?message=asdf", String.class, parameters);
 			System.out.println("Hello World! from " + webMember);
 		}
 		

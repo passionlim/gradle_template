@@ -3,6 +3,7 @@ apply from: DEPENDENCY_GRADLE
 apply from: MAVEN_GRADLE
 
 dependencies {
+	compile project(":shared:user_model")
 	compile "org.springframework.cloud:spring-cloud-starter-feign" 
 }
 

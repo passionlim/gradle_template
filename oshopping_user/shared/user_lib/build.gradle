@@ -7,7 +7,11 @@ dependencies {
 	compile "cj.oshopping.core:core_lib:${oshoppingCommonVersion}"
     compile "org.springframework:spring-core"
     compile "org.springframework:spring-context"
+    //compile "org.springframework.boot:spring-boot-starter-jdbc"
     testCompile "org.springframework.boot:spring-boot-starter-test"
+    
+    //compile "org.mybatis:mybatis"
+    //compile "org.mybatis:mybatis-spring"
     
     compile group: 'com.google.guava', name: 'guava' 
 }
