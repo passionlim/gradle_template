@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.ribbon.FeignRibbonClientAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import com.google.common.collect.Maps;
@@ -26,7 +27,6 @@ import cj.oshopping.user.model.WebMember;
  *
  */
 @SpringBootApplication
-@EnableDiscoveryClient
 @Import(value = { UserApiConfiguration.class })
 public class UserApiFeignClientSample implements CommandLineRunner {
 	Logger LOGGER = LoggerFactory.getLogger(this.getClass());

@@ -1,26 +1,28 @@
 package cj.oshopping.user.api;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+import feign.Request;
 
 @Configuration
+@EnableDiscoveryClient
 @EnableFeignClients("cj.oshopping.user.api")
-@ConfigurationProperties(locations="classpath:api/userService.yml")
+@PropertySource("classpath:api/userService.properties")
 public class UserApiConfiguration {
 
-	//
-	//UserService:
-//		  ribbon:
-//		    read-timeout: 3000  
-//		    connect-timeout: 3000
-//		    ServerListRefreshInterval: 1000
-//		    MaxAutoRetries: 1
-//		    MaxAutoRetriesNextServer: 3 
-//		    OkToRetryOnAllOperations: true
+	@Value("${UserService.ribbon.ConnectTimeout}")
+	Integer connectTimeout = 10 * 1000;
 
-//	@ConfigurationProperties(prefix="UserService")
-//	class UserApiProperties {
-//		private 
-//	}
+	@Value("${UserService.ribbon.ReadTimeout}")
+	Integer readTimeout = 60 * 1000;
+
+	@Bean
+	public Request.Options userApiTimeoutConfiguration() {
+		return new Request.Options(connectTimeout, readTimeout);
+	}
 }

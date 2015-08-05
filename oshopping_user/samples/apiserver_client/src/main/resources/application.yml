@@ -10,8 +10,8 @@ eureka:
    
 #UserService:
 #  ribbon:
-#    read-timeout: 3000  
-#    connect-timeout: 3000
+#    ReadTimeout: 1000  
+#    ConnectTimeout: 1000
 #    ServerListRefreshInterval: 1000
 #    MaxAutoRetries: 1
 #    MaxAutoRetriesNextServer: 3 
